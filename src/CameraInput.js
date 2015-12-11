@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 
 import './CameraInput.css';
 
-import Icon from './Icon.js'
+import Icon from './Icon.js';
 
-var camera = require('./camera.svg');
-
-// import * as Icon from './camera.svg';
-
-// console.log('Icon', Icon);
+var camera = require('../icons/camera.svg');
 
 export default class CameraInput extends Component {
   constructor() {
@@ -17,22 +13,15 @@ export default class CameraInput extends Component {
     this.state = {};
   }
 
+  // doesn't file on change event
   handleInput(evt) {
-    if (this.props.onImage) {
-      let file = evt.target.files ? evt.target.files[0] : null;
-      if (!file) { return; }
+    let file = evt.target.files ? evt.target.files[0] : null;
+    if (file && this.props.onImage) {
       this.props.onImage({ file: file });
     }
   }
 
   render() {
-    let link;
-    if( /^http/.test(this.state.result) ) {
-      link = <a href={this.state.result}>{this.state.result}</a>
-    } else {
-      link = this.state.result;
-    }
-
     return (<div className="camera-input">
       <label className="ci-label">
         <Icon
@@ -47,9 +36,6 @@ export default class CameraInput extends Component {
           onChange={this.handleInput}
           name="cameraInput" />
       </label>
-      {link}
-
-      <img style={{width:"100vmin", display: "block"}} src={this.state.imageUrl} />
     </div>);
   }
 }
