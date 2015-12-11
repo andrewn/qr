@@ -1,14 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  devtool: 'eval',
-  devServer: {
-    contentBase: path.join(__dirname, 'static')
-  },
+  // contexts: path.join(__dirname, 'your-app'),
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000',
-    'webpack/hot/only-dev-server',
     './src/index'
   ],
   output: {
@@ -17,18 +14,23 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new CopyWebpackPlugin([
+      {
+        from: 'static'
+      }
+    ]),
+    new ExtractTextPlugin("bundle.css")
   ],
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['babel'],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader", "postcss-loader")
       },
       {
         test: /\.svg$/,
