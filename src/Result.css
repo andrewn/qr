@@ -1,0 +1,53 @@
+.result {
+  font-size: 2rem;
+  text-align: center;
+  max-width: 80vw;
+}
+
+.result i {
+  display: block;
+  height: 15vmin;
+  width: 15vmin;
+  line-height: 15vmin;
+  margin: 0 auto;
+  border-radius: 50%;
+
+  text-align: center;
+
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+
+  margin-bottom: 5vmin;
+}
+
+.result.is-found i {
+  color: green;
+}
+
+.result.is-not-found i {
+  background-color: rgb(194, 19, 19);
+}
+
+.result a {
+  text-decoration: none;
+  color: #222;
+}
+
+.result .actions {
+  width: 100%;
+}
+
+.result .button {
+  border: 2px solid #999;
+  background: transparent;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+}
+
+.result .button-go {
+  border-color: blue;
+  color: blue;
+}

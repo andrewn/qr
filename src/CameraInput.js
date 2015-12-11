@@ -9,8 +9,14 @@ var camera = require('../icons/camera.svg');
 export default class CameraInput extends Component {
   constructor() {
     super();
-    this.handleInput = this.handleInput.bind(this);
+    this.handleInput  = this.handleInput.bind(this);
+    this.triggerInput = this.triggerInput.bind(this);
     this.state = {};
+  }
+
+  triggerInput() {
+    console.log('triggerInput');
+    this.refs.input.click();
   }
 
   // doesn't file on change event
@@ -28,6 +34,7 @@ export default class CameraInput extends Component {
           className="ci-icon"
           image={camera} />
         <input
+          ref="input"
           type="file"
           capture="camera"
           accept="image/*"

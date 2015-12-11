@@ -14,5 +14,7 @@ Based on `react-hot-boilerplate`
 
 ### Icon credits
 
+'Gear' by Shawn Erdely  from the Noun Project
 'Camera' by Edward Boatman from the Noun Project
 'scan' by doorfortyfour from the Noun Project
+'Gears' by Aha-Soft from the Noun Project
